@@ -76,7 +76,6 @@ for root, dirs, filenames in os.walk(output_path):
                     if re.search(r'[,!?{}\[\]\"\"\'\']',word_tokens[j]):
                         break
                     wordtocompare = wordtocompare+" "+word_tokens[j].lower()
-                if wordtocompare != "":
-                    if(poly_ratio(wordtocompare,feature.lower())>match):
+                if wordtocompare != "" and (poly_ratio(wordtocompare,feature.lower())>match):
                         result1.append([filename,wordtocompare,feature,i,j])
             print(result1)
