@@ -61,15 +61,12 @@ t = []
 document = []
 for root, dirs, filenames in os.walk(output_path):
     for filename in filenames:
-        try:
             print(filename)
             f.append(filename)
             img = Image.open(output_path + filename)
             document = pytesseract.image_to_string(img, lang='eng')
             t.append(document)
             word_tokens = list(nltk.word_tokenize(document))
-        except:
-            continue
         for feature in plist:
             lenfeature = len(feature.split(" "))
             for i in range (len(word_tokens)-lenfeature+1):
