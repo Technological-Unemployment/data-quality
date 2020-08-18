@@ -69,7 +69,7 @@ for root, dirs, filenames in os.walk(output_path):
             t.append(document)
             word_tokens = list(nltk.word_tokenize(document))
         except:
-            pass
+            continue
         for feature in plist:
             lenfeature = len(feature.split(" "))
             for i in range (len(word_tokens)-lenfeature+1):
