@@ -5,10 +5,8 @@ from PIL import Image
 from pdf2image import convert_from_path
 from pdf2image.exceptions import (PDFInfoNotInstalledError, PDFPageCountError, PDFSyntaxError)
 import pytesseract
-import time
 import nltk
 import re
-import numpy as np
 from io import StringIO
 from nltk.tokenize import word_tokenize
 import polyleven
@@ -67,15 +65,15 @@ for root, dirs, filenames in os.walk(output_path):
             document = pytesseract.image_to_string(img, lang='eng')
             t.append(document)
             word_tokens = list(nltk.word_tokenize(document))
-        for feature in plist:
-            lenfeature = len(feature.split(" "))
-            for i in range (len(word_tokens)-lenfeature+1):
-                wordtocompare = ""
-                j=0
-                for j in range(i, i+lenfeature):
-                    if re.search(r'[,!?{}\[\]\"\"\'\']',word_tokens[j]):
-                        break
-                    wordtocompare = wordtocompare+" "+word_tokens[j].lower()
-                if wordtocompare != "" and (poly_ratio(wordtocompare,feature.lower())>match):
-                        result1.append([filename,wordtocompare,feature,i,j])
-            print(result1)
+            for feature in plist:
+                lenfeature = len(feature.split(" "))
+                for i in range (len(word_tokens)-lenfeature+1):
+                    wordtocompare = ""
+                    j=0
+                    for j in range(i, i+lenfeature):
+                        if re.search(r'[,!?{}\[\]\"\"\'\']',word_tokens[j]):
+                            break
+                        wordtocompare = wordtocompare+" "+word_tokens[j].lower()
+                    if wordtocompare != "" and (poly_ratio(wordtocompare,feature.lower())>match):
+                            result1.append([filename,wordtocompare,feature,i,j])
+                print(result1)
