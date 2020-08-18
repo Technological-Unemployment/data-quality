@@ -59,7 +59,6 @@ pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesserac
 f = []
 t = []
 document = []
-#input_dir = OutputPath
 for root, dirs, filenames in os.walk(OutputPath):
     for filename in filenames:
         try:
