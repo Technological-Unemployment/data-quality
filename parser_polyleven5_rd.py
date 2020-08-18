@@ -71,11 +71,6 @@ for root, dirs, filenames in os.walk(OutputPath):
             word_tokens = list(nltk.word_tokenize(document))
         except:
             continue
-#df = pd.DataFrame()
-#df = pd.DataFrame(list(zip(f, t)), columns=['file_Name', 'Text'])
-#df.to_excel('file2.xlsx',index=False)
-
-     #t[0]
         for feature in plist:
             lenfeature = len(feature.split(" "))
             for i in range (len(word_tokens)-lenfeature+1):
@@ -89,7 +84,3 @@ for root, dirs, filenames in os.walk(OutputPath):
                     if(poly_ratio(wordtocompare,feature.lower())>match):
                         result1.append([filename,wordtocompare,feature,i,j])
             print(result1)
-            
-            
-
-# match_df = titlematch.match()
