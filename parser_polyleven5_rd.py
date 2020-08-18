@@ -6,17 +6,12 @@ from pdf2image import convert_from_path
 from pdf2image.exceptions import (PDFInfoNotInstalledError, PDFPageCountError, PDFSyntaxError)
 import pytesseract
 import time
-#from fuzzywuzzy import fuzz
 import nltk
-#from nltk.corpus import stopwords
 import re
-#from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 from io import StringIO
 from nltk.tokenize import word_tokenize
-#import textdistance
 import polyleven
-#nltk.download('punkt')
 PdfPath = r'C:\Users\Computer\Desktop\NLP_Resume'
 OutputPath = r"C:\\Users\\Computer\\Desktop\\output\\"
 
